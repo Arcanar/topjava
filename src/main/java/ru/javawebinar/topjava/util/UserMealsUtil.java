@@ -28,24 +28,8 @@ public class UserMealsUtil {
     }
 
     public static List<UserMealWithExcess> filteredByCycles(List<UserMeal> meals, LocalTime startTime, LocalTime endTime, int caloriesPerDay) {
-        List<UserMealWithExcess> mealsWE = new ArrayList<>();
-        Map<LocalDate,Integer> ccalPerDay = new HashMap<>();
-        for(UserMeal a : meals){
-            ccalPerDay.merge(a.getDateTime().toLocalDate(), a.getCalories(), Integer::sum);
-        }
-        for(UserMeal a : meals){
-            if(ccalPerDay.get(a.getDateTime().toLocalDate())>caloriesPerDay){
-                if(a.getDateTime().toLocalTime().isAfter(startTime)&&a.getDateTime().toLocalTime().isBefore(endTime)){
-                    mealsWE.add(new UserMealWithExcess(a.getDateTime(),a.getDescription(),a.getCalories(),true));
-                }
-            }
-            else if(ccalPerDay.get(a.getDateTime().toLocalDate())<=caloriesPerDay){
-                if(a.getDateTime().toLocalTime().isAfter(startTime)&&a.getDateTime().toLocalTime().isBefore(endTime)){
-                    mealsWE.add(new UserMealWithExcess(a.getDateTime(),a.getDescription(),a.getCalories(),false));
-                }
-            }
-        }
-        return mealsWE;
+
+        return null;
     }
 
     public static List<UserMealWithExcess> filteredByStreams(List<UserMeal> meals, LocalTime startTime, LocalTime endTime, int caloriesPerDay) {
